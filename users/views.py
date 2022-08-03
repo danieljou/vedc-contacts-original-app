@@ -105,7 +105,7 @@ def update_num(request, num_id):
 def user_details(request, user_id):
     context = {}
     user_account = User.objects.get(pk = user_id)
-    account = Personne.objects.get(user_id = user_id)
+    account = Personne.objects.get(user = user_account)
     allnum = Numero.objects.filter(utilisateur_id = user_id)
 
     context['account'] = account
