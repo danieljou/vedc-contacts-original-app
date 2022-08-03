@@ -52,7 +52,7 @@ def assemblee_details(request, assemblee_id):
     context['assemblee'] = assemblee
     context['fidele'] = fidele
     context['all_programme'] = all_programme
-    
+    context['allnum_serviteur'] = allnum_serviteur
 
     return render(request,'assamble_details.html' , context)
 
