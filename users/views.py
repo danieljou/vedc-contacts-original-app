@@ -23,7 +23,7 @@ def add_form(request):
             role.user = account
             role.save()
             messages.success(request, "Enregistrement éffectué avec succès")
-            return redirect('users')
+            return redirect('home')
         else:
              messages.warning(request, "Veuillez compléter le formulaire")
 
