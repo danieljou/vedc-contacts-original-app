@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
+from .models import *
 
 class LoginForm(AuthenticationForm):
 
@@ -17,3 +18,19 @@ class LoginForm(AuthenticationForm):
             }),
         }
         
+
+class AssembleeForm(forms.ModelForm):
+    
+    class Meta:
+        model = Assemblee
+        fields = ("__all__")
+        
+        widgets = {
+            'Encadreur': forms.Select(attrs={
+                'class':'form-select',
+            }),
+
+            'Type_encadreur': forms.Select(attrs={
+                'class':'form-select',
+            }),
+        }

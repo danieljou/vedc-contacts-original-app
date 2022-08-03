@@ -346,13 +346,25 @@
 
                   <a href="{% url 'assemblees' %}">
                     <i class="fas fa-church"></i> 
-                    Assemblées
+                    Liste des Assemblées
                   </a>
 
                   <a href="{% url 'assemblees_management' %}">
                     <i class="fas fa-church"></i> 
                     Gérer votre assemblée
                   </a>
+
+                  {% if request.user.is_superuser %}
+
+                    <a href="{% url 'gestion_des_assemblee' %}">
+                      <i class="fa fa-database" aria-hidden="true"></i>
+                      Gérer les assemblées
+                    </a>
+
+                  {% endif %}
+                  
+
+                  
 
                   <a href="#">
                     <i class="fa fa-info-circle" aria-hidden="true"></i> Aide

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .forms import *
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
@@ -57,3 +57,29 @@ def assemblee_details(request, assemblee_id):
 def assemblees_management(request):
     context = {}
     return render(request, 'gerer_assemblée.html', context)
+
+
+
+@login_required
+@is_admin_required
+def gestion_des_assemblee(request):
+    context = {}
+    assemblee = Assemblee.objects.all()
+   
+    
+    context['assemblee'] = assemblee
+    
+    return render(request, 'gestion_assemblée.html', context)
+
+
+@login_required
+@is_admin_required
+def assemnble_add(request):
+    context = {}
+    form = AssembleeForm(request.POST or None)
+    if(request.method == 'POST'):
+        if(form.is_valid()):
+            form.save()
+            return redirect('gestion_des_assemblee')
+    context['form'] = form
+    return render(request, 'assemblee_add.html', context)

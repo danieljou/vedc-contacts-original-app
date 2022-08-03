@@ -8,9 +8,9 @@ def is_admin_required(function):
     @wraps(function)
     def wrap(request, *args, **kwargs):
         profile = request.user
-        account = Personne.objects.get(user = profile.id)
-        user_type = account.role
-        if(user_type == 'Administrateur'):
+       
+        user_type = profile.is_superuser
+        if(user_type):
             return function(request, *args, **kwargs)
         else:
             a = 0

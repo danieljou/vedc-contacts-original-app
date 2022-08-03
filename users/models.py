@@ -15,7 +15,7 @@ class Numero(models.Model):
     
 
 class Personne(models.Model):
-    assemblee = models.ForeignKey('main.Assemblee',  on_delete=models.SET_NULL, null = True)
+    assemblee = models.ForeignKey('main.Assemblee',  on_delete=models.SET_NULL, null = True, blank = True, help_text = "Si votre assemblée n'est pas disponible contactez votre encadreur")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_encadreur = models.BooleanField(default=False, null = True)
 

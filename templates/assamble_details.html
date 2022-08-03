@@ -18,6 +18,11 @@
 
 
 <div class="container">
+    {% if request.user.is_superuser %}
+            <div class="row">
+                <a href="{% url 'gestion_des_assemblee' %}" class="btn btn-secondary col-1 my-3">Retour</a>
+            </div>
+    {% endif %}
 
     <div class="row">
             <!-- Tabs navs -->
