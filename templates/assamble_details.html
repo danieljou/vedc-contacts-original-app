@@ -221,7 +221,7 @@
           
                   {% for item in fidele %}
                           <div class="div">
-                              <tr data-href="{% url 'user_details' item.id %}">
+                              <tr data-href="{% url 'user_details' item.user.id %}">
                                 <td>{{forloop.counter}}</td>
                                 <td>{{item}}</td>
                               </tr>
