@@ -42,11 +42,16 @@ def assemblee_details(request, assemblee_id):
 
     context = {}
     assemblee = Assemblee.objects.get(pk = assemblee_id)
-   
-    serviteur = User.objects.get(pk = assemblee.Encadreur.id)
+    try:
+        serviteur = User.objects.get(pk = assemblee.Encadreur.id)
+    except:
+        serviteur = False
     fidele = Personne.objects.filter(assemblee_id = assemblee_id )
     all_programme = Programme.objects.filter(assemble = assemblee)
-    allnum_serviteur = Numero.objects.filter(utilisateur = serviteur)
+    try:
+        allnum_serviteur = Numero.objects.filter(utilisateur = serviteur)
+    except:
+        allnum_serviteur = False
 
     context['serviteur'] = serviteur
     context['assemblee'] = assemblee

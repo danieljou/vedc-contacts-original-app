@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center my-5">
         <div class="col-10 col-sm-10">
             <div class="card">
@@ -21,46 +21,49 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
-                        <div class="container">
-                            <div class="row">
-                                {% for item in all_programme %}
-                                    <div class="col-12 col-md-3  my-3 col-sm-12 col-xm-12">
-                                        <div class="card">
-                                            <div class="card-header bg-success text-light">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        {{item.jour}}  
-                                                    </div>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="card-body text-center">
-                                                <p> {{item.Titre}}</p>
-                                                <p class="text-primary">{{item.Heure}}</p>
-                                            </div>
+            </div>
+        </div>
 
-                                            <div class="card-footer">
-                                                <div class="col-12">
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <a href="" class="btn btn-warning"> <i class="fa fa-pen" aria-hidden="true"></i> </a>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <a href="" class="btn btn-danger"> <i class="fa fa-trash" aria-hidden="true"></i> </a>
-                                                        </div>
-                                                    </div>
+        <div class="">
+                <div class="container-fluid">
+                    <div class="row">
+                        {% for item in all_programme %}
+                            <div class="col-12 col-md-3  my-3 col-sm-12 ">
+                                <div class="card">
+                                    <div class="card-header bg-success text-light">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                {{item.jour}}  
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <p> {{item.Titre}}</p>
+                                        <p class="text-primary">{{item.Heure}}</p>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <a href="" class="btn btn-warning"> <i class="fa fa-pen" aria-hidden="true"></i> </a>
+                                                </div>
+                                                <div class="col-6">
+                                                    <a href="" class="btn btn-danger"> <i class="fa fa-trash" aria-hidden="true"></i> </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                {% endfor %}
+                                </div>
                             </div>
-                        </div>
-                        
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
+                
         </div>
+           
+        
     </div>
 </div>
 

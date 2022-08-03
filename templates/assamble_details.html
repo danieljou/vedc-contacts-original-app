@@ -172,9 +172,14 @@
                         <div class="card-body">
                             <div class="col-12">
                                 Responssable : 
-                                <strong class="strong">
-                                    {{assemblee.Type_encadreur}} {{assemblee.Encadreur.last_name}} {{assemblee.Encadreur.first_name}}
-                                </strong>
+                                {% if serviteur != False %}
+                                    <strong class="strong">
+                                        {{assemblee.Type_encadreur}} {{assemblee.Encadreur.last_name}} {{assemblee.Encadreur.first_name}}
+                                    </strong>
+                                {% else %}
+                                    <p> Pas d'encadreur pour le moment </p>
+                                {% endif %}
+                                
                             </div>
                         
                             <div class="col-12">
@@ -185,25 +190,30 @@
                                     </div>
                                 </p>
                                 <!-- allnum_serviteur -->
-                                {% for num in allnum_serviteur %}
-                                <div class="row">
-                                    <div class="col-9">
-                                        <p>
-                                            {% if num.disponible_sur_whatsapp %}
-                                                <a href="https://wa.me/{{num.code_du_pays}}{{num.numero}}" target="_blank" rel="noopener noreferrer" class="text-dark"> <i class="fab fa-whatsapp" aria-hidden="true"></i> {{num}}</a> 
-                                            {% endif %}
-                                            <br>
-                                            {% if num.disponible_sur_appel %}
-                                                 <a href="tel:{{num}} " class="text-dark" > <i class="fa fa-phone" aria-hidden="true" ></i>{{num}} </a>
-                                            {% else %}
-                                                 <a href="tel:{{num}} " class="text-dark"> <i class="fa fa-phone" aria-hidden="true" ></i> {{num}} </a>
-                                            {% endif %}
-                                        </p>
+                                {% if serviteur != False %}
+                                    {% for num in allnum_serviteur %}
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <p>
+                                                {% if num.disponible_sur_whatsapp %}
+                                                    <a href="https://wa.me/{{num.code_du_pays}}{{num.numero}}" target="_blank" rel="noopener noreferrer" class="text-dark"> <i class="fab fa-whatsapp" aria-hidden="true"></i> {{num}}</a> 
+                                                {% endif %}
+                                                <br>
+                                                {% if num.disponible_sur_appel %}
+                                                    <a href="tel:{{num}} " class="text-dark" > <i class="fa fa-phone" aria-hidden="true" ></i>{{num}} </a>
+                                                {% else %}
+                                                    <a href="tel:{{num}} " class="text-dark"> <i class="fa fa-phone" aria-hidden="true" ></i> {{num}} </a>
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                        
                                     </div>
                                     
-                                </div>
+                                    {% endfor %}
+                                {% else %}
+                                    
+                                {% endif %}
                                 
-                                {% endfor %}
                             </div>
                             
                         </div>
