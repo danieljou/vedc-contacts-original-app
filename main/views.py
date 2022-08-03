@@ -15,7 +15,7 @@ def home(request):
     context = {}
     user_id = request.user.id
 
-    user2 = Personne.objects.get(user = request.user)
+    # user2 = Personne.objects.get(user = request.user)
     allnum = Numero.objects.filter(utilisateur_id = user_id)
     context['allnum'] = allnum
     # context['user2'] = user2
