@@ -48,7 +48,7 @@ def user_mod(request):
             role.user = account
             role.save()
             messages.success(request, "Modification éffectuée avec succès")
-            return redirect('users')
+            return redirect('home')
         else:
              messages.warning(request, "Veuillez compléter le formulaire")
 
