@@ -44,7 +44,7 @@
 
                         {% for num in allnum %}
                         <div class="row">
-                            <div class="col-9">
+                            <div class="col-8">
                                 <p>
                                     {% if num.disponible_sur_whatsapp %}
                                         <i class="fab fa-whatsapp" aria-hidden="true"></i> 
@@ -57,7 +57,7 @@
                                     {{num}} 
                                 </p>
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 <a href="{% url 'delete_num' num.id %}" class="mr-2 text-danger"><i class="fa fa-trash" aria-hidden="true"></i> </a> 
                                 <a href="{% url 'update_num' num.id %}" class="ml-2 text-warning"> <i class="fa fa-pen" aria-hidden="true"></i> </a>
                             </div>

@@ -1,18 +1,18 @@
-{% extends 'base.html' %}
-
-{% load crispy_forms_tags %}
+{% extends "base.html" %}
 {% block styles %}
-
+  
+{% load crispy_forms_tags %}
 {% endblock styles %}
 
 {% block content %}
-
 <div class="container">
     <div class="row justify-content-center my-5">
         <div class="col-10 col-sm-10">
+            <a href="{% url 'assemblees_management' %}" class="btn btn-info mb-3"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Retour</a>
+
             <div class="card">
-                <div class="card-header bg-success">
-                   Ajouter une assemblée
+                <div class="card-header bg-success text-light">
+                   Ajouter un programme de persévérence
                 </div>
                 <div class="card-body">
                     <form action="" method="post" novalidate>
@@ -31,6 +31,6 @@
 </div>
 {% endblock content %}
 
-{% block scripts %}
-
-{% endblock scripts %}
+{% block scripst %}
+  
+{% endblock scripst %}

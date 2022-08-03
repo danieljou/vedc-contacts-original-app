@@ -37,4 +37,19 @@ class PhotoAssemble(models.Model):
     Image = models.ImageField( upload_to='PhotoAssemblee')
     assemblee = models.ForeignKey("Assemblee", on_delete=models.CASCADE)
 
+class Programme(models.Model):
+    assemble = models.ForeignKey("Assemblee", related_name='assamble_programme', on_delete=models.CASCADE)
 
+    JOUR_CHOICES = [
+        ('Lundi', 'Lundi'),
+        ('Mardi', 'Pasteur'),
+        ('Mercredi', 'Mercredi'),
+        ('Jeudi', 'Jeudi'),
+        ('Vendredi', 'Vendredi'),
+        ('Samedi', 'Samedi'),
+        ('Dimanche', 'Dimanche'),
+    ]
+
+    jour = models.CharField(choices = JOUR_CHOICES, max_length=50)
+    Heure = models.TimeField(auto_now=False, auto_now_add=False)
+    Titre = models.CharField(max_length=50, null = True)

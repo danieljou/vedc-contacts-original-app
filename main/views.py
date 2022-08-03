@@ -45,10 +45,15 @@ def assemblee_details(request, assemblee_id):
    
     serviteur = User.objects.get(pk = assemblee.Encadreur.id)
     fidele = Personne.objects.filter(assemblee_id = assemblee_id )
-    
+    all_programme = Programme.objects.filter(assemble = assemblee)
+    allnum_serviteur = Numero.objects.filter(utilisateur = serviteur)
+
     context['serviteur'] = serviteur
     context['assemblee'] = assemblee
     context['fidele'] = fidele
+    context['all_programme'] = all_programme
+    
+
     return render(request,'assamble_details.html' , context)
 
 
@@ -56,6 +61,12 @@ def assemblee_details(request, assemblee_id):
 @is_encadreur_required
 def assemblees_management(request):
     context = {}
+    connected_user = request.user
+    connected_account = Personne.objects.get(user = connected_user)
+    assemby = connected_account.assemblee
+    all_programme = Programme.objects.filter(assemble = assemby)
+
+    context['all_programme'] = all_programme
     return render(request, 'gerer_assemblée.html', context)
 
 
@@ -65,7 +76,7 @@ def assemblees_management(request):
 def gestion_des_assemblee(request):
     context = {}
     assemblee = Assemblee.objects.all()
-   
+    
     
     context['assemblee'] = assemblee
     
@@ -83,3 +94,21 @@ def assemnble_add(request):
             return redirect('gestion_des_assemblee')
     context['form'] = form
     return render(request, 'assemblee_add.html', context)
+
+
+def add_programme(request):
+    context = {}
+
+    form = ProgrammeForm(request.POST or None)
+    if(request.method == 'POST'):
+        if(form.is_valid()):
+            connected_user = request.user
+            connected_account = Personne.objects.get(user = connected_user)
+            assemby = connected_account.assemblee
+            program = form.save(commit = False)
+            program.assemble = assemby
+            program.save()
+            return redirect('assemblees_management')
+    
+    context['form'] = form
+    return render(request,'programme_form.html', context)

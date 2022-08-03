@@ -34,3 +34,16 @@ class AssembleeForm(forms.ModelForm):
                 'class':'form-select',
             }),
         }
+
+class ProgrammeForm(forms.ModelForm):
+    
+    class Meta:
+        model = Programme
+        exclude = ('assemble',)
+        widgets = {
+            'jour' : forms.Select(attrs = {
+                'class' : 'form-select'
+            }),
+            'Heure' : forms.TimeInput(attrs={'type': 'time'})
+
+        }
