@@ -42,7 +42,7 @@ class Programme(models.Model):
 
     JOUR_CHOICES = [
         ('Lundi', 'Lundi'),
-        ('Mardi', 'Pasteur'),
+        ('Mardi', 'Mardi'),
         ('Mercredi', 'Mercredi'),
         ('Jeudi', 'Jeudi'),
         ('Vendredi', 'Vendredi'),
