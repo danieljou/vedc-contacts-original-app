@@ -19,7 +19,7 @@ class Assemblee(models.Model):
     ]
 
     Nom_assemblee = models.CharField(max_length=80)
-    Encadreur = models.ForeignKey(User, related_name = 'Encandreur', on_delete=models.SET_NULL, blank = True)
+    Encadreur = models.ForeignKey(User, related_name = 'Encandreur', on_delete=models.SET_NULL, blank = True, null =True)
     Type_encadreur = models.CharField(choices = ENCADREUR_CHOICE, max_length=50, default = SRVT)
     coordonnees_localisation = models.TextField(null = True, blank = True)
     pays = models.CharField( max_length=8)
