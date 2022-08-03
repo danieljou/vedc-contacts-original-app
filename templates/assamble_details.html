@@ -1,0 +1,257 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 my-3">
+            <div class="text-center">
+                <h1> {{assemblee}}</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+
+    <div class="row">
+            <!-- Tabs navs -->
+<ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link active"
+        id="ex2-tab-1"
+        data-mdb-toggle="tab"
+        href="#ex2-tabs-1"
+        role="tab"
+        aria-controls="ex2-tabs-1"
+        aria-selected="true"
+        >assemblee</a
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link"
+        id="ex2-tab-2"
+        data-mdb-toggle="tab"
+        href="#ex2-tabs-2"
+        role="tab"
+        aria-controls="ex2-tabs-2"
+        aria-selected="false"
+        >Programme de la semaine</a
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link"
+        id="ex2-tab-3"
+        data-mdb-toggle="tab"
+        href="#ex2-tabs-3"
+        role="tab"
+        aria-controls="ex2-tabs-3"
+        aria-selected="false"
+        >Encadreur</a
+      >
+    </li>
+
+
+    <li class="nav-item" role="presentation">
+        <a
+          class="nav-link"
+          id="ex2-tab-4"
+          data-mdb-toggle="tab"
+          href="#ex2-tabs-4"
+          role="tab"
+          aria-controls="ex2-tabs-4"
+          aria-selected="false"
+          >Liste des Biens aimés</a
+        >
+      </li>
+
+  </ul>
+  <!-- Tabs navs -->
+  
+  <!-- Tabs content -->
+  <div class="tab-content" id="ex2-content">
+    <div
+      class="tab-pane fade show active"
+      id="ex2-tabs-1"
+      role="tabpanel"
+      aria-labelledby="ex2-tab-1"
+    >
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <div class="card">
+                    <div class="card-header">
+                        <strong> Situation géographique</strong>
+                    </div>
+        
+                    <div class="card-body">
+
+                        <div class="item">
+                            <span class="title"> Continent : </span>
+                            <span class="value"> {{assemblee.Continent}} </span>
+                        </div>
+
+                        <div class="item">
+                            <span class="title"> Pays : </span>
+                            <span class="value"> {{assemblee.pays}} </span>
+                        </div>
+
+                        <div class="item">
+                            <span class="title"> Ville : </span>
+                            <span class="value"> {{assemblee.ville}} </span>
+                        </div>
+
+                        <div class="item">
+                            <span class="title"> Quartier : </span>
+                            <span class="value"> {{assemblee.Quartier}} </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="ex2-tabs-2"
+      role="tabpanel"
+      aria-labelledby="ex2-tab-2">
+
+        <div class="text-center">
+            Programme de la semaine
+        </div>
+
+    </div>
+    <div
+      class="tab-pane fade"
+      id="ex2-tabs-3"
+      role="tabpanel"
+      aria-labelledby="ex2-tab-3">
+
+            <div class="row justify-content-center">
+                <div class="col-11">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong> Encadreur</strong>
+                        </div>
+            
+                        <div class="card-body">
+                            <div class="col-12">
+                                Responssable : 
+                                <strong class="strong">
+                                    {{assemblee.Type_encadreur}} {{assemblee.Encadreur.last_name}} {{assemblee.Encadreur.first_name}}
+                                </strong>
+                            </div>
+                        
+                            <div class="col-12">
+                                <p>
+                                    <div class="alert alert-info alert-dismissible fade show text-center" role="alert">
+                                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                        <strong class="">Cliquer pour interargir</strong> 
+                                    </div>
+                                    
+                                    
+                                </p>
+                                
+                                <div class="row">
+                                    <div class="col-9">
+                                        <p> 
+                                            <a href="tel:690784542" class="text-dark" target="_blank"> <i class="fa fa-phone" aria-hidden="true"></i> 690 784 542 </a>
+                                        </p>
+                                    </div>
+                                </div>
+            
+                                <div class="row">
+                                    <div class="col-9">
+                                        <p> 
+                                            <a href="https://wa.me/+237690784542?gbOpenExternal=1"class="text-dark" target="_blank"><i class="fab fa-whatsapp" aria-hidden="true"></i> 673 280 581</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-9"> 
+                                        <p>  <a href="mailto:{{assemblee.Encadreur.email}}" class="text-dark"><i class="fa fa-envelope" aria-hidden="true"></i>  {{assemblee.Encadreur.email}}</a> </p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div
+    class="tab-pane fade"
+    id="ex2-tabs-4"
+    role="tabpanel"
+    aria-labelledby="ex2-tab-4"
+  >
+    <div class="text-center">
+            Liste des biens aimés
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table id="studenttable" class="table table-bordered table-hover" data-page-length='100'>
+                <thead class="thead-light">
+                  <tr>
+                      <th width="5%">#</th>
+                      <th>Nom</th>
+                      
+                     
+                  </tr>
+                </thead>
+                <tbody>
+          
+                  {% for item in fidele %}
+                          <div class="div">
+                              <tr data-href="{% url 'user_details' item.id %}">
+                                <td>{{forloop.counter}}</td>
+                                <td>{{item}}</td>
+                              </tr>
+                          </div>
+                      {% endfor %}
+          
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+
+  </div>
+
+  </div>
+  <!-- Tabs content -->
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block scripts %}
+
+<script>
+    $('#studenttable').DataTable({
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", ()=>{
+        const rows = document.querySelectorAll('tr[data-href]');
+        rows.forEach(row =>{
+            row.addEventListener('click',()=>{
+                window.location.href = row.dataset.href; 
+            });
+        });
+    });
+</script>
+{% endblock scripts %}

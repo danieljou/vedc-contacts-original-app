@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 my-3">
+                <h1 class="text-center text-primary"> VEDC CONTACTS - Liste des assemblées</h1>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="table-responsive card">
+                <div class="card-body">
+                    <table id="studenttable" class="table table-bordered table-hover" data-page-length='100'>
+                        <thead class="thead-light">
+                          <tr>
+                              <td width="5%">#</td>
+                              <td>Assemblée</td>
+                              <td>Ville</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                  
+                          {% for item in assemblee %}
+                                  <div class="div">
+                                      <tr data-href="{% url 'assemblee_details' item.id %}">
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{item.Nom_assemblee}}</td>
+                                        <td>{{item.ville}}</td>
+                                      </tr>
+                                  </div>
+                              {% endfor %}
+                  
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+
+<script>
+    $('#studenttable').DataTable({
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", ()=>{
+        const rows = document.querySelectorAll('tr[data-href]');
+        rows.forEach(row =>{
+            row.addEventListener('click',()=>{
+                window.location.href = row.dataset.href; 
+            });
+        });
+    });
+</script>
+
+{% endblock scripts %}

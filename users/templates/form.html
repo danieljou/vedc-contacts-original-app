@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% block title %}  
+{% endblock title %}
+{% block styles %}
+    <style>
+        .text-muted{
+            margin-top: 30px;
+        }
+    </style>
+{% endblock styles %}
+{% block content %}
+
+
+<div class="container p-3">
+    
+    {% if mod %}
+    <h3 class="text-center">Modifier votre profile</h3>
+    {% else %}
+    <h3 class="text-center">Inscription</h3>
+    {% endif %}
+</div>
+<hr>
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-sm-8">
+                <div class="container">
+                    <div class="card">
+                        <div class="card-header bg-success">
+                            <strong> </strong>
+                        </div>
+                        <div class="card-body">
+                            <form  method="post" novalidate>
+                                {% csrf_token %}
+            
+                                {% for item in role_form %}
+                                    <div class="mb-5 mt-5">
+                                        {{item |as_crispy_field}}
+                                    </div>
+                                {% endfor %}
+            
+                                {% for item in form_user %}
+                                    <div class="mb-5 mt-5">
+                                        {{item |as_crispy_field}}
+                                    </div>
+                                {% endfor %}
+                                
+                                <input type="submit" value="Enregistrer" class="btn btn-success">
+                            </form>
+                            
+                        </div>
+                        <div class="card-footer bg-success"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+
+{% endblock scripts %}

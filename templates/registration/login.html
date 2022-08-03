@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+<!-- <div class="row justify-content-center my-5">
+    <div class="col-6">
+        <div class="spinner spinner-border text-success" role="status">
+    
+        </div>
+        <span class="text-success" > Chargement....</span>
+    </div>  
+</div> -->
+
+<style>
+
+
+</style>
+
+    <div class="container">
+        <div class="row justify-content-center my-5">
+            <div class="col-10 col-sm-10">
+                <div class="card">
+                    <div class="card-header">
+                        Connectez-vous
+                    </div>
+                    <div class="card-body">
+                        <form  method="post" novalidate>
+                            {% csrf_token %}
+                          
+                              
+                                
+                                    {% if form.errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        Saisissez un nom d’utilisateur et un mot de passe valides. Remarquez que chacun de ces champs est sensible à la casse (différenciation des majuscules/minuscules).
+                                    </div>
+                                    {% endif %}
+                                
+                              
+                            
+                           <div class="mb-3 mt-4">
+                                <div class="mb-3p">
+                                    {{ form.username|as_crispy_field}}
+                                    <i class="icopp fas fa-user"></i>
+                                </div>
+                           </div>
+
+                            <div class="mb-3">
+                                <div class="mb-3p">
+                                    {{ form.password|as_crispy_field}}
+                                    <i class=" icopp fa fa-lock" aria-hidden="true"></i>
+                                    
+                                </div>
+                            </div>
+
+                            
+                            <button type="submit" class="btn btn-success mt-5" id="check"> Se Connecter</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

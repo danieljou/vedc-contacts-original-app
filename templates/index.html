@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<!-- <div class="row justify-content-center my-5">
+    <div class="col-6">
+        <div class="spinner spinner-border text-success" role="status">
+    
+        </div>
+        <span class="text-success" > Chargement....</span>
+    </div>  
+</div> -->
+<style>
+    .element{
+        display: flex;
+        height: 70px;
+    }
+    .element .font{
+        width: 80px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        color: rgba(6, 5, 5, 0.621);
+    }
+    .element .value{
+        display: flex;
+        height: 100%;
+        align-items: center;
+        padding-left: 15px;
+        justify-content: space-around;
+        width: 80%;
+    }
+    .val{
+       
+        color: orangered;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .text{
+        width: 60%;
+    }
+
+    @media screen and (max-width:1200px) {
+        .element .font{
+            display: none;
+        }
+    }
+
+    @media screen and (max-width:700px) {
+        .element .font{
+            display: flex;
+        }
+    }
+</style> 
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 my-3">
+            <h1 class="text-center text-primary"> VEDC CONTACTS</h1>
+            <hr>
+            <p class="text-center">Rendez-vous dans n'importe quelle assemblée et ayez toutes leurs coordonnées</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <!-- <h3 class="text-center"> Assemblée récemment ajoutées</h3> -->
+            
+            <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{% static 'img/ngousso.jpg' %}" alt="">
+                   
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'img/logo2-vedc.png' %}" alt="">
+                    
+                  </div>
+                  <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                    Lorem, ipsum dolor.
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div> -->
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+       <div class="col-md-3 col-sm-6 my-2">
+           <div class="card">
+               <a href="{% url 'assemblees' %}">
+                <div class=" element">
+                    <div class="font bg-primary">
+                        <i class="fas fa-church  "></i>
+                    </div>
+                    <div class="value">
+                        <div class="text text-dark"> Assemblées</div>
+                        <div class="val"> {{assemblee_count}} </div>
+                        
+                    </div>
+                </div>
+               </a>
+           </div>
+       </div>
+
+       <div class="col-md-3 col-sm-6 my-2">
+           <div class="card">
+               <div class=" element">
+                   <div class="font bg-info">
+                       <i class="fas fa-globe-africa    "></i>
+                   </div>
+                   <div class="value">
+                       <div class="text"> En afrique</div>
+                   
+                       <div class="val">600</div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+       <div class="col-md-3 col-sm-6 my-2">
+           <div class="card">
+               <div class=" element">
+                   <div class="font bg-warning">
+                       <i class="fas fa-globe-americas    "></i>
+                   </div>
+                   <div class="value">
+                       <div class="text"> Ameriques</div>
+                       <div class="val compteur" data-debut="0" data-fin = " {{nbappimme }}" data-delay = "0.0000000000000001" > 10</div>
+                      
+                   </div>
+               </div>
+           </div>
+       </div>
+
+       <div class="col-md-3 col-sm-6 my-2">
+           <div class="card">
+               <div class=" element">
+                   <div class="font bg-danger">
+                        <i class="fas fa-globe-europe"></i>
+
+                   </div>
+                   <div class="value">
+                       <div class="text"> Europe</div>
+                       <div class="val"> 30</div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+       <div class="col-md-3 col-sm-6 my-2">
+        <div class="card">
+            <div class=" element">
+                <div class="font bg-success">
+                     <i class="fas fa-globe-asia"></i>
+
+                </div>
+                <div class="value">
+                    <div class="text"> Asie</div>
+                    <div class="val"> 7</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+       
+
+   </div>
+</div>
+{% endblock content %}

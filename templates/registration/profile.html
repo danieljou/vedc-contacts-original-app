@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+<!-- <div class="row justify-content-center my-5">
+    <div class="col-6">
+        <div class="spinner spinner-border text-success" role="status">
+    
+        </div>
+        <span class="text-success" > Chargement....</span>
+    </div>  
+</div> -->
+
+    <div class="container">
+        <div class="row ">
+            <div class="col-12">
+                <div class="card bg-info my-2">
+                    <div class="card-header">
+                        <strong>Mes Informations</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-10">
+                                {{user.last_name}} {{user.first_name}} 
+                            </div>
+                            <div class="col-2">
+                                <span> <a href="{% url 'user_update' %}" class="text-dark"> <i class="fas fa-user-edit fa-sm btn "></i></a> </span>
+                            </div>
+                        </div>
+                         
+                         <br> <br>
+                         <p> Assembléé : {{user2.assemblee}} </p>
+                    </div> 
+                </div>
+
+                <div class="card my-2">
+                    <div class="card-header">
+                        <strong>Vos contacts</strong>
+                    </div>
+                    <div class="card-body">
+                        
+                        <br><br>
+
+                        {% for num in allnum %}
+                        <div class="row">
+                            <div class="col-9">
+                                <p>
+                                    {% if num.disponible_sur_whatsapp %}
+                                        <i class="fab fa-whatsapp" aria-hidden="true"></i> 
+                                    {% endif %}
+                                    
+                                    {% if num.disponible_sur_appel %}
+                                         <i class="fa fa-phone" aria-hidden="true"></i> 
+                                    {% endif %}
+
+                                    {{num}} 
+                                </p>
+                            </div>
+                            <div class="col-3">
+                                <a href="{% url 'delete_num' num.id %}" class="mr-2 text-danger"><i class="fa fa-trash" aria-hidden="true"></i> </a> 
+                                <a href="{% url 'update_num' num.id %}" class="ml-2 text-warning"> <i class="fa fa-pen" aria-hidden="true"></i> </a>
+                            </div>
+                        </div>
+                        
+                        {% endfor %}
+
+                        <div class="row">
+                            <div class="col-9"> 
+                                <p>  <i class="fa fa-envelope" aria-hidden="true"></i>  {{user.email}} </p>
+                            </div>
+                            <div class="col-3">
+                                <a href="" class="mr-2 text-danger"><i class="fa fa-trash" aria-hidden="true"></i> </a> 
+                                <a href="" class="ml-2 text-warning"> <i class="fa fa-pen" aria-hidden="true"></i> </a>
+                            </div>
+                        </div>
+
+                       
+
+                        <p><a href="{% url 'add_numero' %}" class="btn btn-primary"> <i class="fa fa-plus" aria-hidden="true"></i> Ajouter un numéro </a> </p>
+                    </div> 
+                </div>
+
+            </div>
+        </div>    
+    </div>
+
+
+{% endblock content %}
