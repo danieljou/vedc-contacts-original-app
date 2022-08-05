@@ -84,7 +84,7 @@ def gerer_une_assemblee(request, assemble_id):
     connected_user = request.user
     connected_account = Personne.objects.get(user = connected_user)
 
-    all_programme = Programme.objects.filter(pk = assemble_id)
+    all_programme = Programme.objects.filter(assemble_id = assemble_id)
 
 
     context['all_programme'] = all_programme
