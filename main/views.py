@@ -70,12 +70,25 @@ def assemblees_management(request):
     connected_user = request.user
     connected_account = Personne.objects.get(user = connected_user)
     assemby = connected_account.assemblee
+    assembies = Assemblee.objects.filter(Encadreur = connected_user)
     all_programme = Programme.objects.filter(assemble = assemby)
 
+    context['assembies'] = assembies
     context['all_programme'] = all_programme
     return render(request, 'gerer_assemblée.html', context)
 
+@login_required
+@is_encadreur_required
+def gerer_une_assemblee(request, assemble_id):
+    context = {}
+    connected_user = request.user
+    connected_account = Personne.objects.get(user = connected_user)
 
+    all_programme = Programme.objects.filter(pk = assemble_id)
+
+
+    context['all_programme'] = all_programme
+    return render(request, 'gerer_assemble_encadreur.html', context)
 
 @login_required
 @is_admin_required
@@ -97,6 +110,11 @@ def assemnble_add(request):
     if(request.method == 'POST'):
         if(form.is_valid()):
             form.save()
+            serv_id = form.cleaned_data['Encadreur']
+            if(serv_id):
+                encadreur = Personne.objects.get(user = serv_id)
+                encadreur.is_encadreur = True
+                encadreur.save()
             return redirect('gestion_des_assemblee')
     context['form'] = form
     return render(request, 'assemblee_add.html', context)
