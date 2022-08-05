@@ -7,6 +7,13 @@
 
 {% block content %}
 
+
+<div class="row">
+    <div class="">
+        <a href="{% url 'gestion_des_assemblee' %}" class="btn btn-primary  m-4"> Retour</a>
+    </div>
+</div>
+
 <div class="container">
     <div class="row justify-content-center my-5">
         <div class="col-10 col-sm-10">
@@ -22,7 +29,7 @@
                                 {{item |as_crispy_field}}
                             </div>
                         {% endfor %}
-                        <button type="submit" class="btn btn-success mt-5" id="check"> Ajouter</button>
+                        <button type="submit" class="btn btn-success mt-5" id="check"> Enregistrer</button>
                     </form>
                 </div>
             </div>

@@ -119,6 +119,33 @@ def assemnble_add(request):
     context['form'] = form
     return render(request, 'assemblee_add.html', context)
 
+@login_required
+@is_admin_required
+def delete_assemble(request, assemble_id):
+    
+    context = {}
+    assemble = Assemblee.objects.get(pk = assemble_id)
+    assemble.delete()
+    return redirect('gestion_des_assemblee')
+
+@login_required
+@is_admin_required
+def update_assemble(request, assemble_id):
+    
+    context = {}
+    assemble = Assemblee.objects.get(pk = assemble_id)
+    form = AssembleeForm(request.POST or None, instance = assemble)
+    if(request.method == 'POST'):
+        if(form.is_valid()):
+            form.save()
+            serv_id = form.cleaned_data['Encadreur']
+            if(serv_id):
+                encadreur = Personne.objects.get(user = serv_id)
+                encadreur.is_encadreur = True
+                encadreur.save()
+            return redirect('gestion_des_assemblee')
+    context['form'] = form
+    return render(request, 'assemblee_add.html', context)
 
 def add_programme(request):
     context = {}
@@ -144,3 +171,6 @@ def all_contacts(request):
 
     context['all_contact'] = all_contact
     return render(request, 'all_contacts.html', context)
+
+
+

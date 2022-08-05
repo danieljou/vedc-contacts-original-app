@@ -12,8 +12,10 @@ urlpatterns = [
     path("gerer_une_assemblee<assemble_id>/", views.gerer_une_assemblee, name="gerer_une_assemblee"),
 
     path("assemnble_add/", views.assemnble_add, name="assemnble_add"),
+    path("delete_assemble<assemble_id>/", views.delete_assemble, name="delete_assemble"),
+    path("update_assemble<assemble_id>/", views.update_assemble, name="update_assemble"),
     path("add_programme/", views.add_programme, name="add_programme"),
-
+    
     path("all_contacts/", views.all_contacts, name="all_contacts"),
     
 ]

@@ -32,6 +32,7 @@
                           <td width="5%">#</td>
                           <td>Assemblée</td>
                           <td>Ville</td>
+                          <td> Traitement</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -42,6 +43,14 @@
                                     <td>{{forloop.counter}}</td>
                                     <td>{{item.Nom_assemblee}}</td>
                                     <td>{{item.ville}}</td>
+                                    <td>
+                                        <a href="{% url 'delete_assemble' item.id %}">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="{% url 'update_assemble' item.id %}" class="ml-3">
+                                            <i class="fa fa-pen" aria-hidden="true" ></i>
+                                        </a>
+                                    </td>
                                   </tr>
                               </div>
                           {% endfor %}
