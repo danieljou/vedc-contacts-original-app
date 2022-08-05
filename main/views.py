@@ -42,11 +42,12 @@ def assemblee_details(request, assemblee_id):
 
     context = {}
     assemblee = Assemblee.objects.get(pk = assemblee_id)
+    
     try:
         serviteur = User.objects.get(pk = assemblee.Encadreur.id)
     except:
         serviteur = False
-    fidele = Personne.objects.filter(assemblee_id = assemblee_id )
+    fidele = Personne.objects.filter(assemblee_id = assemblee_id ).order_by('user__last_name')
     all_programme = Programme.objects.filter(assemble = assemblee)
     try:
         allnum_serviteur = Numero.objects.filter(utilisateur = serviteur)
