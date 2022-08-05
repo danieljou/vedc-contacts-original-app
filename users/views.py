@@ -107,8 +107,10 @@ def user_details(request, user_id):
     user_account = User.objects.get(pk = user_id)
     account = Personne.objects.get(user = user_account)
     allnum = Numero.objects.filter(utilisateur_id = user_id)
+    back = request.GET['back']
 
     context['account'] = account
     context['user_account'] = user_account
     context['allnum'] = allnum
+    context['back'] = back
     return render(request, 'personne_details.html', context)

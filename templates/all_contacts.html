@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block styles %}
+  
+{% endblock styles %}       
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h2 class="text-center mt-3 text-primary"> Tous les contacts </h2>
+            <hr class="text-success p-1">
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+
+        </div>
+        <div class="card-body">
+            
+            <table id="studenttable" class="table table-bordered table-hover" data-page-length='100'>
+                <thead class="thead-light">
+                    <tr>
+                        <td width="5%">#</td>
+                        <td>Nom</td>
+                        <td>Ville</td>
+                        <td>Assemblée</td>
+                    </tr>
+                </thead>
+                <tbody>
+            
+                    {% for item in all_contact %}
+                            <div class="div">
+                                <tr data-href="{% url 'user_details' item.user.id%}?back=all_contacts">
+                                <td>{{forloop.counter}}</td>
+                                <td>{{item}}</td>
+                                <td>{{item.assemblee.ville}}</td>
+                                <td>{{item.assemblee}}</td>
+                                </tr>
+                            </div>
+                        {% endfor %}
+            
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+  
+<script>
+    $('#studenttable').DataTable({
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", ()=>{
+        const rows = document.querySelectorAll('tr[data-href]');
+        rows.forEach(row =>{
+            row.addEventListener('click',()=>{
+                window.location.href = row.dataset.href; 
+            });
+        });
+    });
+</script>
+
+{% endblock scripts %}

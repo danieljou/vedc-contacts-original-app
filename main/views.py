@@ -15,10 +15,10 @@ def home(request):
     context = {}
     user_id = request.user.id
 
-    # user2 = Personne.objects.get(user = request.user)
+    user2 = Personne.objects.get(user = request.user)
     allnum = Numero.objects.filter(utilisateur_id = user_id)
     context['allnum'] = allnum
-    # context['user2'] = user2
+    context['user2'] = user2
     return render(request, 'registration/profile.html',context)
 
 def index(request):
@@ -117,3 +117,11 @@ def add_programme(request):
     
     context['form'] = form
     return render(request,'programme_form.html', context)
+
+
+def all_contacts(request):
+    context = {}
+    all_contact = Personne.objects.all()
+
+    context['all_contact'] = all_contact
+    return render(request, 'all_contacts.html', context)
