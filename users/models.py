@@ -21,5 +21,7 @@ class Personne(models.Model):
     is_encadreur = models.BooleanField(default=False, null = True)
 
     def __str__(self):
-        return str(self.user.last_name) + ' ' + str(self.user.first_name)
+        non = str(self.user.last_name)
+        prenom = str(self.user.first_name)
+        return non.upper() + ' ' + prenom.capitalize()
     
