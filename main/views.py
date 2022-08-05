@@ -32,7 +32,7 @@ def index(request):
 def assemblees(request):
     context = {}
     assemblee_count = Assemblee.objects.count()
-    assemblee = Assemblee.objects.all()
+    assemblee = Assemblee.objects.all().order_by('Nom_assemblee')
 
     context['assemblee_count'] = assemblee_count
     context['assemblee'] = assemblee
