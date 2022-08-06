@@ -33,6 +33,10 @@ class AssembleeForm(forms.ModelForm):
             'Type_encadreur': forms.Select(attrs={
                 'class':'form-select',
             }),
+
+            'Continent': forms.Select(attrs={
+                'class':'form-select',
+            }),
         }
 
 class ProgrammeForm(forms.ModelForm):

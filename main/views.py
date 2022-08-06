@@ -160,7 +160,7 @@ def add_programme(request, assemble_id):
             assembly = Assemblee.objects.get(pk = assemble_id)
             
             program = form.save(commit = False)
-            program.assemble = assembly
+            program.assemble = assemble
             program.save()
             return redirect('assemblees_management')
     
