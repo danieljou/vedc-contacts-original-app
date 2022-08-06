@@ -25,6 +25,15 @@ class Assemblee(models.Model):
     pays = models.CharField( max_length=8)
     ville = models.CharField( max_length=50)
     Quartier = models.CharField(max_length=50, null = True, blank = True)
+    CONTINENT_CHOICES = (
+        ('Amérique','Amérique'),
+        ('Afrique','Afrique'),
+        ('Europe','Europe'),
+        ('Asie','Asie'),
+
+
+    )
+    Continent = models.CharField (max_length=50, default = 'Afrique', choices = CONTINENT_CHOICES )
 
     
     
