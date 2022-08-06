@@ -7,27 +7,22 @@
 
 {% block content %}
     
-<a href="{% url 'assemblees_management' %}" class="btn btn-warning m-3">Retour</a>
-<div class="container-fluid">
+<div class="container">
+    <a href="{% url 'assemblees_management' %}" class="btn btn-warning m-3">Retour</a>
+</div>
+<div class="container">
     <div class="row justify-content-center my-2">
-        <div class="col-10 col-sm-10">
-            <div class="card">
-                <div class="card-header bg-primary text-light">
-                    <div class="row">
-                        <div class="col-md-6">
-                            Programme de persévérence
-                        </div>
+        <div class="">
 
-                        <div class="col-md-6 my-2">
-                            <a href="{% url 'add_programme' %}" class="btn btn-light">Ajouter un programme</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="">
+                <h1> Programme de persévérence  <h1>
+                <hr>
             </div>
+                <a href="{% url 'add_programme' assembly.id %}" class="btn btn-primary">Ajouter un programme</a>
         </div>
 
         <div class="">
-                <div class="container-fluid">
+                <div class="container my-3">
                     <div class="row">
                         {% for item in all_programme %}
                             <div class="col-12 col-md-3  my-3 col-sm-12 ">

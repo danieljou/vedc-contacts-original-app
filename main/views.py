@@ -77,16 +77,19 @@ def assemblees_management(request):
     context['all_programme'] = all_programme
     return render(request, 'gerer_assemblée.html', context)
 
+
 @login_required
 @is_encadreur_required
 def gerer_une_assemblee(request, assemble_id):
     context = {}
+
     connected_user = request.user
+
     connected_account = Personne.objects.get(user = connected_user)
+    assembly = Assemblee.objects.get(pk = assemble_id)
+    all_programme = Programme.objects.filter(assemble = assembly)
 
-    all_programme = Programme.objects.filter(assemble_id = assemble_id)
-
-
+    context['assembly'] = assembly
     context['all_programme'] = all_programme
     return render(request, 'gerer_assemble_encadreur.html', context)
 
@@ -147,17 +150,17 @@ def update_assemble(request, assemble_id):
     context['form'] = form
     return render(request, 'assemblee_add.html', context)
 
-def add_programme(request):
+def add_programme(request, assemble_id):
     context = {}
 
     form = ProgrammeForm(request.POST or None)
     if(request.method == 'POST'):
         if(form.is_valid()):
-            connected_user = request.user
-            connected_account = Personne.objects.get(user = connected_user)
-            assemby = connected_account.assemblee
+            
+            assembly = Assemblee.objects.get(pk = assemble_id)
+            
             program = form.save(commit = False)
-            program.assemble = assemby
+            program.assemble = assembly
             program.save()
             return redirect('assemblees_management')
     

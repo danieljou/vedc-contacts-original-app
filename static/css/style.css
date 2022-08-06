@@ -1,7 +1,7 @@
 body {
   font-family: "Raleway", sans-serif;
   color: #1b161d;
-  background-color: #ffffff;
+  background-color: #a5a1a1;
 }
 
 .body-bg {
@@ -38,7 +38,6 @@ body {
 
 .hero_area {
   background-color: #2801b9;
-  background-image: url(../images/hero.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -61,7 +60,7 @@ body {
   padding: 0px 25px;
   color: #fefeff;
   text-align: center;
-  font-family: "Roboto", sans-serif;
+ 
 }
 
 .custom_menu-btn {
