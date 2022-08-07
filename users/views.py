@@ -34,10 +34,11 @@ def add_form(request):
 
 @login_required
 def user_mod(request):
-    account = Personne.objects.get(pk = request.user.id)
+    context = {}
+    account = Personne.objects.get(user_id = request.user.id)
     user = User.objects.get(pk = account.user.id)
 
-    context = {}
+    
     role_form = PersonneForm(request.POST or None, instance = account)
     form_user = FormUser(request.POST or None, instance = user)
 
