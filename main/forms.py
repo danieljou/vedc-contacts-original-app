@@ -51,3 +51,9 @@ class ProgrammeForm(forms.ModelForm):
             'Heure' : forms.TimeInput(attrs={'type': 'time'})
 
         }
+
+class Assemble_cord_Form(forms.ModelForm):
+    
+    class Meta:
+        model = Assemblee
+        fields = ('Latitude', 'Longitude')

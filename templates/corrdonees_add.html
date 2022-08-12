@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  
+<style>
+    .valid{
+        padding: 5px;
+        text-align: center;
+        background-color: rgb(65, 65, 165);
+        color: white;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+</style>
+
+    <div class="container">
+        <div class="card my-5">
+            <div class="card-header">
+                Gerer les coordonnes
+            </div>
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form |crispy}}
+
+                    <div class="row">
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-success">Enregistrer</button>
+                        </div>
+
+                        <div class="col-6">
+                            <p class="valid" onclick="get_coord()">
+                                Utiliser ma positions
+                            </p>
+                           
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+
+
+
+<script>
+    function get_coord(){
+        alert('Veuillez patienter que les champ se remplisse');
+        if ( navigator.geolocation ) {
+            // On demande d'envoyer la position courante à la fonction callback
+            navigator.geolocation.getCurrentPosition( callback, erreur );
+        } else {
+            // Function alternative sinon
+            alternative();
+        }
+    }
+
+    function erreur( error ) {
+        switch( error.code ) {
+            case error.PERMISSION_DENIED:
+            alert( 'Vous avez refusé la demande' );
+                break;     
+            case error.POSITION_UNAVAILABLE:
+                alert( 'Position indéterminée' );
+                break;
+            case error.TIMEOUT:
+            alert( 'Réponse trop lente' );
+                break;
+        }
+        // Function alternative
+        alternative();
+    };
+
+    function callback( position ) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        var inp_lat = document.getElementById('id_Latitude');
+        var inp_log = document.getElementById('id_Longitude');
+
+        inp_lat.value = lat
+        inp_log.value = lng
+        // Do stuff
+        alert('Terminé');
+    }
+</script>
+
+
+{% endblock scripts %}

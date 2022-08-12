@@ -98,9 +98,10 @@ def gerer_une_assemblee(request, assemble_id):
 def gestion_des_assemblee(request):
     context = {}
     assemblee = Assemblee.objects.all()
-    
+   
     
     context['assemblee'] = assemblee
+    
     
     return render(request, 'gestion_assemblée.html', context)
 
@@ -131,6 +132,22 @@ def delete_assemble(request, assemble_id):
     assemble.delete()
     return redirect('gestion_des_assemblee')
 
+
+@login_required
+@is_encadreur_required
+def coordonee_management(request,assemble_id):
+
+    context = {}
+    assemble = Assemblee.objects.get(pk = assemble_id)
+    form = Assemble_cord_Form(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            assemble.set_coordonnees(form.cleaned_data['Latitude'],form.cleaned_data['Longitude'])
+            assemble.save()
+        return redirect("assemblees_management")
+    context['form'] = form
+    return render(request,'corrdonees_add.html', context)
+
 @login_required
 @is_admin_required
 def update_assemble(request, assemble_id):
@@ -160,7 +177,7 @@ def add_programme(request, assemble_id):
             assembly = Assemblee.objects.get(pk = assemble_id)
             
             program = form.save(commit = False)
-            program.assemble = assemble
+            program.assemble = assembly
             program.save()
             return redirect('assemblees_management')
     

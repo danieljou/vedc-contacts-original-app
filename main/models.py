@@ -35,6 +35,18 @@ class Assemblee(models.Model):
     )
     Continent = models.CharField (max_length=50, default = 'Afrique', choices = CONTINENT_CHOICES )
 
+
+    Latitude = models.FloatField(null = True, blank = True)
+    Longitude = models.FloatField(null = True,blank = True)
+    
+    link = ''
+
+    def get_coodonees(self):
+        return 'https://google.com/maps/dir//' + str(self.Latitude) + ',' + str(self.Longitude)
+    
+    def set_coordonnees(self, lat, long):
+        self.Latitude = lat
+        self.Longitude = long
     
     
 
@@ -62,3 +74,5 @@ class Programme(models.Model):
     jour = models.CharField(choices = JOUR_CHOICES, max_length=50)
     Heure = models.TimeField(auto_now=False, auto_now_add=False)
     Titre = models.CharField(max_length=50, null = True)
+
+
