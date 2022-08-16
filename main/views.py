@@ -148,6 +148,14 @@ def coordonee_management(request,assemble_id):
     context['form'] = form
     return render(request,'corrdonees_add.html', context)
 
+
+def assamblee_graph(request, assemble_id):
+
+    context = {}
+    assemble = Assemblee.objects.get(pk = assemble_id)
+
+    context['assemble'] = assemble
+    return render(request, 'assemble_graph.html', context)
 @login_required
 @is_admin_required
 def update_assemble(request, assemble_id):

@@ -49,7 +49,7 @@
 
 <script>
     function get_coord(){
-        alert('Veuillez patienter que les champ se remplissent');
+        alert('Veuillez patienter que les champs se remplissent');
         if ( navigator.geolocation ) {
             // On demande d'envoyer la position courante à la fonction callback
             navigator.geolocation.getCurrentPosition( callback, erreur );
@@ -62,7 +62,7 @@
     function erreur( error ) {
         switch( error.code ) {
             case error.PERMISSION_DENIED:
-            alert( 'Vous avez refusé la demande' );
+            alert( 'Verifiez votre accès à la géolocalisation ' );
                 break;     
             case error.POSITION_UNAVAILABLE:
                 alert( 'Position indéterminée' );

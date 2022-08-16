@@ -1,0 +1,33 @@
+{% extends "base.html" %}   
+
+
+{% block styles %}
+    <style>
+        iframe{
+            height: 100vh;
+        }
+    </style>
+{% endblock styles %}
+
+{% block content %}
+    
+<div class="container">
+    <a href="{% url 'assemblees' %}" class="btn btn-warning m-3">Retour</a>
+</div>
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+             <iframe src="{{assemble.get_coodonees}}" frameborder="1" width="100%"></iframe>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+  
+{% endblock scripts %}
+
+

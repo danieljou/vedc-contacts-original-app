@@ -463,19 +463,7 @@
       }
     </script>
 
-    <script>
-      var check = document.querySelectorAll('#myNav a, tbody tr , .btn');
-      var loader = document.getElementById('loader');
-      for(let i = 0; i < check.length; i++){
-        const item = check[i];
-        item.onclick = function(){
-          loader.style.display = "flex";
-          
-      }
-      }
-      
-  </script>
-
+    
 
     {% block scripts %}{% endblock scripts %}
   </body>

@@ -16,6 +16,7 @@ urlpatterns = [
     path("update_assemble/<assemble_id>/", views.update_assemble, name="update_assemble"),
     path("add_programme/<assemble_id>", views.add_programme, name="add_programme"),
     path("coordonee_management/<assemble_id>", views.coordonee_management, name="coordonee_management"),
+    path("assamblee_graph<assemble_id>", views.assamblee_graph, name="assamblee_graph"),
     
     path("all_contacts/", views.all_contacts, name="all_contacts"),
     
